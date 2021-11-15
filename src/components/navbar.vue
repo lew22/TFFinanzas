@@ -11,7 +11,7 @@
             <img src="/profile1.jpg" alt="">
           </v-avatar>
           <p class=" mt-2 ">
-            Andree Liñan</p>
+            Richard garcia</p>
         </v-flex>
       </v-layout>
       <v-list-item  >

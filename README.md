@@ -5,6 +5,14 @@
 npm install
 ```
 
+## Project local data base
+```
+npm i -g json-server
+cd server
+json-server db.json --routes routes.json
+```
+
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve

@@ -2,14 +2,14 @@
   "usuarios": [
     {
       "id": 1,
-      "nombre": "Andree Liñan",
-      "mail": "andree@gmail.com",
+      "nombre": "Richard garcia",
+      "mail": "richardgarmori@gmail.com",
       "password": "asdf123"
     },
     {
       "id": 2,
-      "nombre": "Juan Perez",
-      "mail": "jperez@gmail.com",
+      "nombre": "mauricio",
+      "mail": "mauricio@gmail.com",
       "password": "cuenta123"
     }
   ],
