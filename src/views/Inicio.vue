@@ -27,6 +27,7 @@ import PendientesInicio from "@/components/pendientes-inicio";
 import EstadisticasInicio from "@/components/estadisticas-inicio";
 import AgregarDeuda from "@/components/agregar-deuda";
 import Navbar from "@/components/navbar";
+
 export default {
 name: "Inicio",
   components: {Navbar, AgregarDeuda, EstadisticasInicio, PendientesInicio}

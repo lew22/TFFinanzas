@@ -4,7 +4,6 @@
 
     <crear-descuento @addDiscount="agregarDescuento" />
 
-
     <v-card>
       <v-card-title>Datos iniciales</v-card-title>
       <v-card-text>
@@ -27,8 +26,8 @@
 
     </v-card>
 
-    <v-card>
 
+    <v-card>
     <v-simple-table dense>
       <template v-slot:default>
         <thead>
@@ -67,13 +66,17 @@
             TCEA
           </th>
         </tr>
+
+
         </thead>
+
         <tbody>
+
         <tr
             v-for="item in soluciones"
             :key="item.id"
         >
-          <td class="text-right"> {{item.id}} </td>
+          <td class="text-right"> {{item.id}}</td>
           <td class="text-right"> {{item.ndias}} </td>
           <td class="text-right"> {{ item.tep.toFixed(3)}} %</td>
           <td class="text-right"> {{item.d.toFixed(3)}} %</td>
@@ -84,10 +87,44 @@
           <td class="text-right blue--text"> {{ item.valorRecibido.toFixed(2) }} </td>
           <td class="text-right red--text"> {{ item.Flujo.toFixed(2) }} </td>
           <td class="text-right"> {{ item.tcea.toFixed(4) }}  %</td>
+
         </tr>
+
         </tbody>
+
       </template>
+
     </v-simple-table>
+
+      <template>
+        <v-data-table
+            :headers="dessertHeaders"
+            :items="desserts"
+            :single-expand="singleExpand"
+            :expanded.sync="expanded"
+            item-key="name"
+            show-expand
+            class="elevation-1"
+        >
+          <template v-slot:top>
+            <v-toolbar flat>
+              <v-toolbar-title>Expandable Table</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-switch
+                  v-model="singleExpand"
+                  label="Single expand"
+                  class="mt-2"
+              ></v-switch>
+            </v-toolbar>
+          </template>
+          <template v-slot:expanded-item="{ headers, item }">
+            <td :colspan="headers.length">
+              More info about {{ item.name }}
+            </td>
+          </template>
+        </v-data-table>
+      </template>
+
 
   </v-card>
     <v-card-actions>
@@ -108,6 +145,8 @@
 import DeudasApiService from "@/services/deudas-api-service";
 import CrearDescuento from "@/components/crear-descuento";
 
+
+
 export default {
 name: "descuento",
   components: {CrearDescuento},
@@ -118,7 +157,7 @@ name: "descuento",
     displayDeudasAPI:[],
 
     id:1,
-    fecha:'2021-05-04',
+    fecha:'2021-11-16',
 
     dias:360 ,
     gastoi: 11.70,
@@ -131,13 +170,13 @@ name: "descuento",
     ],
 
     deudas:[
-      {titulo: 'Deuda 1',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 8538.00 , inicio: '2021-04-11', vencimiento:'2021-07-10', estado:'pendiente', cliente:'cliente1' },
-      {titulo: 'Deuda 2',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 9865.00 , inicio: '2021-04-15', vencimiento:'2021-06-14', estado:'pendiente', cliente:'cliente1' },
-      {titulo: 'Deuda 3',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 12125.00 , inicio: '2021-04-08', vencimiento:'2021-07-07', estado:'pendiente', cliente:'cliente1' },
-      {titulo: 'Deuda 4',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 9358.00 , inicio: '2021-04-05', vencimiento:'2021-08-03', estado:'pendiente', cliente:'cliente1' },
-      {titulo: 'Deuda 5',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 12125.00 , inicio: '2021-04-07', vencimiento:'2021-07-06', estado:'pendiente', cliente:'cliente1' },
-      {titulo: 'Deuda 6',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 2549.00 , inicio: '2021-04-04', vencimiento:'2021-07-03', estado:'pendiente', cliente:'cliente1' },
-      {titulo: 'Deuda 7',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 11999.00 , inicio: '2021-04-15', vencimiento:'2021-05-15', estado:'pendiente', cliente:'cliente1' },
+      {titulo: 'Deuda 1',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 8538.00 , inicio: '2021-11-16', vencimiento:'2022-11-16', estado:'pendiente', cliente:'cliente1' },
+      {titulo: 'Deuda 2',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 9865.00 , inicio: '2021-11-16', vencimiento:'2022-11-16', estado:'pendiente', cliente:'cliente1' },
+      {titulo: 'Deuda 3',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 12125.00 , inicio: '2021-11-16', vencimiento:'2022-11-16', estado:'pendiente', cliente:'cliente1' },
+      {titulo: 'Deuda 4',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 9358.00 , inicio: '2021-11-16', vencimiento:'2022-11-16', estado:'pendiente', cliente:'cliente1' },
+      {titulo: 'Deuda 5',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 12125.00 , inicio: '2021-11-16', vencimiento:'2022-11-16', estado:'pendiente', cliente:'cliente1' },
+      {titulo: 'Deuda 6',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 2549.00 , inicio: '2021-11-16', vencimiento:'2022-11-16', estado:'pendiente', cliente:'cliente1' },
+      {titulo: 'Deuda 7',descripcion:'Deuda por servicios prestados en el 2021 ', valor: 11999.00 , inicio: '2021-11-16', vencimiento:'2022-11-16', estado:'pendiente', cliente:'cliente1' },
     ]
   }
   },

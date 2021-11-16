@@ -34,6 +34,14 @@
                 prepend-icon="mdi-cash"
             ></v-text-field>
 
+            <v-select
+                :items=" itemsAPIM "
+                item-text="moneda"
+                item-value="id"
+                label="Moneda"
+                v-model="item.TipoMonedaId"
+                prepend-icon="mdi-cash-marker"
+            ></v-select>
 
             <v-container>
               <v-menu
@@ -157,6 +165,7 @@
 <script>
 import DeudasApiService from "@/services/deudas-api-service";
 import ClientesApiService from "@/services/clientes-api.service";
+import MonedaApiService from "@/services/moneda-api.service";
 
 export default {
   name: "agregar-deuda",
@@ -179,6 +188,7 @@ export default {
 
       ],
       clientesAPI:[],
+      monedaAPI:[],
 
       items:[
         {nombre:'Juan', id: 1},
@@ -186,6 +196,7 @@ export default {
         {nombre:'Luis', id: 3},
       ],
       itemsAPI:[],
+      itemsAPIM:[],
 
 
       menu1: false,
@@ -200,6 +211,7 @@ export default {
        valorNominal:'',
       fechaGiro:'',
       fechaVencimiento: '',
+        TipoMonedaId:'',
       clienteId:1
     },
 
@@ -214,6 +226,7 @@ export default {
         DeudasApiService.create(this.item)
         console.log(this.item)
         this.recibirClientesAPI()
+        this.recibirMonedasAPI()
 
       }
 
@@ -222,7 +235,7 @@ export default {
       ClientesApiService.getAll()
           .then(response => {
             this.clientesAPI = response.data;
-            this.itemsAPI = response.data.map(this.mapear)
+            this.itemsAPI = response.data.map(this.mapearc)
 
           })
           .catch((e) => {
@@ -230,18 +243,41 @@ export default {
           });
       console.log(this.itemsAPI, "este es....")
     },
-    mapear(info){
+    mapearc(info){
       return{
         nombre: info.nombre,
         id: info.id
 
       }
 
+    },
+
+    recibirMonedasAPI() {
+      MonedaApiService.getAll()
+          .then(response => {
+            this.monedaAPI = response.data;
+            this.itemsAPIM = response.data.map(this.mapearm)
+
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      console.log(this.itemsAPIM, "este es....")
+    },
+    mapearm(info){
+      return{
+        moneda: info.TipoMoneda,
+        id: info.id
+      }
+
     }
+
+
 
   },
   mounted() {
     this.recibirClientesAPI()
+    this.recibirMonedasAPI()
   }
 
 }
