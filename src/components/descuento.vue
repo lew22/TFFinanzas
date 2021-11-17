@@ -111,7 +111,7 @@
 <!--</template>-->
 
 <template>
-  <div>
+  <div class="pa-md-4 mx-lg-auto">
 
     <v-card >
     <crear-descuento @addDiscount="agregarDescuento" />
@@ -253,6 +253,13 @@ name: "descuento",
   }
   },
   methods:{
+    onResize(){
+      if(window.innerWidth < 769)
+        this.isMobile = true;
+      else
+        this.isMobile = false;
+
+    },
   agregarDescuento(obj){
 
     this.fecha= obj.fecha

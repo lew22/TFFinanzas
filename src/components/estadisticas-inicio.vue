@@ -4,7 +4,7 @@
       <v-card
           flat
           height="360"
-          class="blue">
+          class="indigo lighten-3">
 
         <v-card-title class="text-h5">
           Deudas pendientes
@@ -16,7 +16,7 @@
         </v-card-subtitle>
         <v-card-text>
           <v-avatar size="120">
-            <v-icon size="100"> mdi-wallet</v-icon>
+            <v-icon size="100"> mdi-wallet-travel</v-icon>
           </v-avatar>
           <p class="text-h4 text--primary">
             {{ numdeudas }}
@@ -26,7 +26,7 @@
         </v-card-text>
 
         <v-card-actions>
-          <v-btn depressed color="grey" @click="navigateToCartera"> Ir a descuentos</v-btn>
+          <v-btn depressed color="green" @click="navigateToCartera"> Ir a descuentos</v-btn>
         </v-card-actions>
       </v-card>
 
@@ -38,7 +38,7 @@
       <v-card
           flat
           height="360"
-          class="blue">
+          class="indigo lighten-3">
 
         <v-card-title class="text-h5">
           Clientes
@@ -50,7 +50,7 @@
         </v-card-subtitle>
         <v-card-text>
           <v-avatar size="120">
-            <v-icon size="100"> mdi-account-check</v-icon>
+            <v-icon size="100"> mdi-account-supervisor</v-icon>
           </v-avatar>
           <p class="text-h4 text--primary">
             {{ numclientes}}
@@ -60,7 +60,7 @@
         </v-card-text>
 
         <v-card-actions>
-          <v-btn depressed color="grey" @click="navigateToClientes" > Ir a clientes</v-btn>
+          <v-btn depressed color="green" @click="navigateToClientes" > Ir a clientes</v-btn>
         </v-card-actions>
       </v-card>
 
@@ -92,6 +92,13 @@ name: "estadisticas-inicio",
   },
 
   methods:{
+    onResize(){
+      if(window.innerWidth < 769)
+        this.isMobile = true;
+      else
+        this.isMobile = false;
+
+    },
     recibirDeudas(){
       DeudasApiService.getAll()
           .then(response => {

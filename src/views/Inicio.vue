@@ -1,21 +1,21 @@
 <template>
 
-  <v-app class="blue-grey lighten-3">
+  <v-app class="white">
 
-    <v-card  flat height="150" color="blue-grey lighten-3"></v-card>
+    <v-card  flat height="150" color="white"></v-card>
 
 
   <v-card-title>Inicio</v-card-title>
     <estadisticas-inicio></estadisticas-inicio>
 
-    <v-card  flat color="blue-grey lighten-3" height="100">
+    <v-card  flat color="white" height="100">
 
     </v-card>
 
 
     <v-spacer> <h1>Deudas actuales </h1></v-spacer>
     <agregar-deuda ></agregar-deuda>
-    <v-card height="30" flat color="blue-grey lighten-3"></v-card>
+    <v-card height="30" flat color="white"></v-card>
     <pendientes-inicio></pendientes-inicio>
 
     <navbar></navbar>
