@@ -38,11 +38,11 @@
   ],
   "moneda": [
     {
-    "TipoMoneda": "Soles",
+      "tipomoneda": "Soles",
       "id": 1
     },
     {
-      "TipoMoneda": "Dolares",
+      "tipomoneda": "Dolares",
       "id": 2
     }
   ],
@@ -86,6 +86,16 @@
       "clienteId": 1,
       "TipoMonedaId": 1,
       "id": 4
+    },
+    {
+      "titulo": "testtt",
+      "descripcion": "tessttttt",
+      "valorNominal": 10000000,
+      "fechaGiro": "2021-11-16",
+      "fechaVencimiento": "2022-11-16",
+      "TipoMonedaId": 2,
+      "clienteId": 1,
+      "id": 5
     }
   ]
 }

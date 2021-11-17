@@ -266,7 +266,7 @@ export default {
     },
     mapearm(info){
       return{
-        moneda: info.TipoMoneda,
+        moneda: info.tipomoneda,
         id: info.id
       }
 
