@@ -116,7 +116,7 @@
   <div class="pa-md-4 mx-lg-auto">
 
     <v-card >
-    <crear-descuento @addDiscount="agregarDescuento" />
+    <crear-descuento  @addDiscount="agregarDescuento" />
 
     <v-card>
       <v-card-title>Datos iniciales</v-card-title>

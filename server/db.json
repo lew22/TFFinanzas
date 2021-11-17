@@ -16,10 +16,10 @@
   "clientes": [
     {
       "nombre": "Juan",
-      "dni": 74624721,
-      "direccion": "Av. Siempre viva",
+      "dni": 43243244,
+      "direccion": "Jr Principal",
       "ndeudas": 0,
-      "id": 1
+      "id":1
     },
     {
       "nombre": "Pedro",
@@ -59,43 +59,33 @@
     },
     {
       "titulo": "Servicios prestados",
+      "descripcion": "Por venta de madera",
+      "valorNominal": 8538,
+      "fechaGiro": "2021-11-16",
+      "fechaVencimiento": "2022-11-16",
+      "clienteId": 3,
+      "TipoMonedaId": 1,
+      "id": 1
+    },
+    {
+      "titulo": "Servicios prestados",
+      "descripcion": "Por venta de madera",
+      "valorNominal": 8538,
+      "fechaGiro": "2021-11-16",
+      "fechaVencimiento": "2022-11-16",
+      "clienteId": 3,
+      "TipoMonedaId": 1,
+      "id": 1
+    },
+    {
+      "titulo": "Servicios prestados",
       "descripcion": "Por venta de materiales",
       "valorNominal": 9865,
       "fechaGiro": "2021-11-16",
       "fechaVencimiento": "2022-11-16",
       "clienteId": 2,
-      "TipoMonedaId": 1,
-      "id": 2
-    },
-    {
-      "titulo": "Servicios prestados",
-      "descripcion": "Venta de algo",
-      "valorNominal": 12125,
-      "fechaGiro": "2021-11-16",
-      "fechaVencimiento": "2022-11-16",
-      "clienteId": 1,
-      "TipoMonedaId": 1,
-      "id": 3
-    },
-    {
-      "titulo": "MIEMPRESA",
-      "descripcion": "PRESTAMO",
-      "valorNominal": 100000,
-      "fechaGiro": "2021-11-16",
-      "fechaVencimiento": "2022-11-16",
-      "clienteId": 1,
-      "TipoMonedaId": 1,
-      "id": 4
-    },
-    {
-      "titulo": "testtt",
-      "descripcion": "tessttttt",
-      "valorNominal": 10000000,
-      "fechaGiro": "2021-11-16",
-      "fechaVencimiento": "2022-11-16",
       "TipoMonedaId": 2,
-      "clienteId": 1,
-      "id": 5
+      "id": 2
     }
   ]
 }

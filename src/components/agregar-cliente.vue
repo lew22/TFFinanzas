@@ -1,7 +1,7 @@
 <template>
   <v-dialog transition="dialog-bottom-transition" max-width="600" v-model="dialog">
     <template v-slot:activator="{on, attrs}">
-      <v-btn class="success" v-bind="attrs" v-on="on">Agregar cliente</v-btn>
+      <v-btn rounded outlined color="green" v-bind="attrs" v-on="on">Agregar cliente</v-btn>
 
     </template>
     <template v-slot:default="dialog">
@@ -34,9 +34,9 @@
             ></v-text-field>
             <v-spacer></v-spacer>
 
-            <v-btn text @click="submit(); dialog.value = false " class="success mx-0 mt-3">Aceptar</v-btn>
+            <v-btn text @click="submit(); dialog.value = false " rounded outlined color="green" class="mx-0 mt-3">Aceptar</v-btn>
             <v-spacer></v-spacer>
-            <v-btn  @click="dialog.value=false" class="error mx-0 mt-3"> Cancelar</v-btn>
+            <v-btn  @click="dialog.value=false" rounded outlined color="red" class=" mx-0 mt-3"> Cancelar</v-btn>
           </v-form>
         </v-card-text>
 

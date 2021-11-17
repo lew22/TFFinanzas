@@ -1,7 +1,7 @@
 <template>
   <v-dialog transition="dialog-bottom-transition" max-width="600" v-model="dialog">
     <template v-slot:activator="{on, attrs}">
-      <v-btn class="success" v-bind="attrs" v-on="on" width="300">Agregar deuda</v-btn>
+      <v-btn rounded outlined color="green" v-bind="attrs" v-on="on" width="300">Agregar deuda</v-btn>
 
     </template>
     <template v-slot:default="dialog">
