@@ -110,8 +110,9 @@
       <v-app-bar app class="indigo lighten-3">
         <!--          <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>-->
 
-        <v-toolbar-title>Applicacion de cartera de letras al descuento</v-toolbar-title>
+        <v-toolbar-title>Aplicación de cartera de letras al descuento</v-toolbar-title>
       </v-app-bar>
+
 
       <v-main>
         <router-view></router-view>

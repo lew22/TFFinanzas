@@ -1,10 +1,13 @@
 <template>
 
   <v-app class="blue-grey lighten-3">
-    <v-card  flat height="150" color="blue-grey lighten-3"></v-card>
-    <v-card-title>Descuento</v-card-title>
 
-    <descuento></descuento>
+    <v-content>
+      <v-card  flat height="150" color="blue-grey lighten-3"></v-card>
+      <v-card-title>Descuento</v-card-title>
+
+      <descuento></descuento>
+    </v-content>
 
     <navbar></navbar>
 

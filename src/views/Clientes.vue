@@ -2,12 +2,13 @@
 
   <v-app class="blue-grey lighten-3">
 
+    <v-content>
+      <v-card-title>Clientes</v-card-title>
+      <v-card flat height="100" color ="blue-grey lighten-3">
 
-    <v-card-title>Clientes</v-card-title>
-    <v-card flat height="100" color ="blue-grey lighten-3">
-
-    </v-card>
-    <tabla-clientes></tabla-clientes>
+      </v-card>
+      <tabla-clientes></tabla-clientes>
+    </v-content>
 
     <navbar></navbar>
 

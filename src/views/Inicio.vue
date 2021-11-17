@@ -4,19 +4,20 @@
 
     <v-card  flat height="150" color="white"></v-card>
 
+    <v-content>
+      <v-card-title>Inicio</v-card-title>
+      <estadisticas-inicio></estadisticas-inicio>
 
-  <v-card-title>Inicio</v-card-title>
-    <estadisticas-inicio></estadisticas-inicio>
+      <v-card  flat color="white" height="100">
 
-    <v-card  flat color="white" height="100">
-
-    </v-card>
+      </v-card>
 
 
-    <v-spacer> <h1>Deudas actuales </h1></v-spacer>
-    <agregar-deuda ></agregar-deuda>
-    <v-card height="30" flat color="white"></v-card>
-    <pendientes-inicio></pendientes-inicio>
+      <v-spacer> <h1>Deudas actuales </h1></v-spacer>
+      <agregar-deuda ></agregar-deuda>
+      <v-card height="30" flat color="white"></v-card>
+      <pendientes-inicio></pendientes-inicio>
+    </v-content>
 
     <navbar></navbar>
   </v-app>

@@ -1,7 +1,7 @@
 <template>
 
   <div class="pending">
-    <v-container >
+    <v-container>
       <v-card
           height="75"
           flat v-for="deuda in deudasAPI" :key="deuda.id">
