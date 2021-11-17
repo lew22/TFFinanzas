@@ -1,7 +1,119 @@
+<!--<template>-->
+
+<!--  <v-card height="120">-->
+
+<!--    <crear-descuento @addDiscount="agregarDescuento" />-->
+
+<!--    <v-card>-->
+<!--      <v-card-title>Datos iniciales</v-card-title>-->
+<!--      <v-card-text>-->
+<!--        <li>-->
+<!--          Fecha de descuento {{fecha}}-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          Dias x año {{dias}}-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          Gastos iniciales  {{gastoi}}-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          Gastos finales {{gastof}}-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          TEA compensatoria {{tea}} %-->
+<!--        </li>-->
+<!--      </v-card-text>-->
+
+<!--    </v-card>-->
+
+
+<!--    <v-card>-->
+<!--    <v-simple-table dense>-->
+<!--      <template v-slot:default>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--          <th class="text-right">-->
+<!--            Id-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            NDias-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            TEP (i')-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            d-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            Descuento-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            Costos iniciales-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            Costos finales-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            Valor neto-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            Valor a recibir-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            Flujo-->
+<!--          </th>-->
+<!--          <th class="text-right">-->
+<!--            TCEA-->
+<!--          </th>-->
+<!--        </tr>-->
+
+
+<!--        </thead>-->
+
+<!--        <tbody>-->
+
+<!--        <tr-->
+<!--            v-for="item in soluciones"-->
+<!--            :key="item.id"-->
+<!--        >-->
+<!--          <td class="text-right"> {{item.id}}</td>-->
+<!--          <td class="text-right"> {{item.ndias}} </td>-->
+<!--          <td class="text-right"> {{ item.tep.toFixed(3)}} %</td>-->
+<!--          <td class="text-right"> {{item.d.toFixed(3)}} %</td>-->
+<!--          <td class="text-right red&#45;&#45;text" > {{ item.descuento.toFixed(2) }} </td>-->
+<!--          <td class="text-right red&#45;&#45;text"> {{ item.costosIniciales.toFixed(2) }} </td>-->
+<!--          <td class="text-right red&#45;&#45;text"> {{ item.costosFinales.toFixed(2) }} </td>-->
+<!--          <td class="text-right"> {{ item.valorNeto.toFixed(2) }}</td>-->
+<!--          <td class="text-right blue&#45;&#45;text"> {{ item.valorRecibido.toFixed(2) }} </td>-->
+<!--          <td class="text-right red&#45;&#45;text"> {{ item.Flujo.toFixed(2) }} </td>-->
+<!--          <td class="text-right"> {{ item.tcea.toFixed(4) }}  %</td>-->
+
+<!--        </tr>-->
+
+<!--        </tbody>-->
+
+<!--      </template>-->
+
+<!--    </v-simple-table>-->
+
+<!--  </v-card>-->
+<!--    <v-card-actions>-->
+<!--      <v-card-text align="right" style="list-style-type:none;">-->
+<!--        <li >NDias: diferencia de dias entre la fecha de vencimiento de la deuda y el descuento</li>-->
+<!--        <li>TEP: Tasa Efectiva del Periodo</li>-->
+<!--        <li>d: Porcentaje de descuento</li>-->
+<!--        <li>Valor neto: Valor a presente al momento del descuento</li>-->
+<!--        <li>Descuento: Monto descontado de la deuda</li>-->
+<!--        <li>TCEA: Tasa de Costo Efectivo Anual</li>-->
+<!--      </v-card-text>-->
+<!--    </v-card-actions>-->
+<!--  </v-card>-->
+<!--</template>-->
+
 <template>
+  <div>
 
-  <v-card height="120">
-
+    <v-card >
     <crear-descuento @addDiscount="agregarDescuento" />
 
     <v-card>
@@ -26,120 +138,57 @@
 
     </v-card>
 
+    </v-card>
 
-    <v-card>
-    <v-simple-table dense>
-      <template v-slot:default>
-        <thead>
-        <tr>
-          <th class="text-right">
-            Id
-          </th>
-          <th class="text-right">
-            NDias
-          </th>
-          <th class="text-right">
-            TEP (i')
-          </th>
-          <th class="text-right">
-            d
-          </th>
-          <th class="text-right">
-            Descuento
-          </th>
-          <th class="text-right">
-            Costos iniciales
-          </th>
-          <th class="text-right">
-            Costos finales
-          </th>
-          <th class="text-right">
-            Valor neto
-          </th>
-          <th class="text-right">
-            Valor a recibir
-          </th>
-          <th class="text-right">
-            Flujo
-          </th>
-          <th class="text-right">
-            TCEA
-          </th>
-        </tr>
+    <v-data-table
+        :headers="solucionHeaders"
+        :items="soluciones"
+        :single-expand="singleExpand"
+        :expanded.sync="expanded"
+        item-key="id"
+        show-expand
+        class="elevation-1"
+    >
 
-
-        </thead>
-
-        <tbody>
-
-        <tr
-            v-for="item in soluciones"
-            :key="item.id"
-        >
-          <td class="text-right"> {{item.id}}</td>
-          <td class="text-right"> {{item.ndias}} </td>
-          <td class="text-right"> {{ item.tep.toFixed(3)}} %</td>
-          <td class="text-right"> {{item.d.toFixed(3)}} %</td>
-          <td class="text-right red--text" > {{ item.descuento.toFixed(2) }} </td>
-          <td class="text-right red--text"> {{ item.costosIniciales.toFixed(2) }} </td>
-          <td class="text-right red--text"> {{ item.costosFinales.toFixed(2) }} </td>
-          <td class="text-right"> {{ item.valorNeto.toFixed(2) }}</td>
-          <td class="text-right blue--text"> {{ item.valorRecibido.toFixed(2) }} </td>
-          <td class="text-right red--text"> {{ item.Flujo.toFixed(2) }} </td>
-          <td class="text-right"> {{ item.tcea.toFixed(4) }}  %</td>
-
-        </tr>
-
-        </tbody>
-
+      <template v-slot:top>
+        <v-toolbar flat>
+          <v-toolbar-title>Expandable Table</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-switch
+              v-model="singleExpand"
+              label="Single expand"
+              class="mt-2"
+          ></v-switch>
+        </v-toolbar>
       </template>
-
-    </v-simple-table>
-
-      <template>
-        <v-data-table
-            :headers="dessertHeaders"
-            :items="desserts"
-            :single-expand="singleExpand"
-            :expanded.sync="expanded"
-            item-key="name"
-            show-expand
-            class="elevation-1"
-        >
-          <template v-slot:top>
-            <v-toolbar flat>
-              <v-toolbar-title>Expandable Table</v-toolbar-title>
-              <v-spacer></v-spacer>
-              <v-switch
-                  v-model="singleExpand"
-                  label="Single expand"
-                  class="mt-2"
-              ></v-switch>
-            </v-toolbar>
-          </template>
-          <template v-slot:expanded-item="{ headers, item }">
-            <td :colspan="headers.length">
-              More info about {{ item.name }}
-            </td>
-          </template>
-        </v-data-table>
+      <template v-slot:expanded-item="{ headers, item}">
+        <td :colspan="headers.length">
+          More info about {{ item.ndias}}
+        </td>
       </template>
+<!--      <template v-slot:expanded-item="{ headers, item}">-->
+<!--        <td :colspan="headers.length">-->
+<!--          More info about {{ item.ndias}}-->
+<!--        </td>-->
+<!--      </template>-->
 
 
-  </v-card>
-    <v-card-actions>
-      <v-card-text align="right" style="list-style-type:none;">
-        <li >NDias: diferencia de dias entre la fecha de vencimiento de la deuda y el descuento</li>
-        <li>TEP: Tasa Efectiva del Periodo</li>
-        <li>d: Porcentaje de descuento</li>
-        <li>Valor neto: Valor a presente al momento del descuento</li>
-        <li>Descuento: Monto descontado de la deuda</li>
-        <li>TCEA: Tasa de Costo Efectivo Anual</li>
-      </v-card-text>
-    </v-card-actions>
-  </v-card>
+    </v-data-table>
+
+    <v-card-text align="right" style="list-style-type:none;">
+              <li >NDias: diferencia de dias entre la fecha de vencimiento de la deuda y el descuento</li>
+              <li>TEP: Tasa Efectiva del Periodo</li>
+              <li>d: Porcentaje de descuento</li>
+              <li>Valor neto: Valor a presente al momento del descuento</li>
+              <li>Descuento: Monto descontado de la deuda</li>
+              <li>TCEA: Tasa de Costo Efectivo Anual</li>
+    </v-card-text>
+
+  </div>
+
 
 </template>
+
 
 <script>
 import DeudasApiService from "@/services/deudas-api-service";
@@ -153,6 +202,29 @@ name: "descuento",
 
   data(){
   return{
+    expanded: [],
+    singleExpand: false,
+    solucionHeaders: [
+      {
+        text: 'ID',
+        align: 'start',
+        sortable: false,
+        value: 'id',
+      },
+      { text: 'Moneda', value: 'moneda' },
+      { text: 'Ndias', value: 'ndias' },
+      { text: 'TEP', value: 'tep' },
+      { text: 'D', value: 'd' },
+      { text: 'Descuento', value: 'descuento' },
+      { text: 'Costos iniciales', value: 'costosIniciales' },
+      { text: 'Costos finales', value: 'costosFinales' },
+      { text: 'Valor neto', value: 'valorNeto' },
+      { text: 'Valor a recibir', value: 'valorRecibido' },
+      { text: 'Flujo', value: 'Flujo' },
+      { text: 'TCEA', value: 'tcea' },
+      { text: '', value: 'data-table-expand' },
+    ],
+
     deudasAPI:[],
     displayDeudasAPI:[],
 
@@ -165,7 +237,7 @@ name: "descuento",
     tea:14.800,
 
     soluciones:[
-      {id: 0, ndias:0, tep:0, d:0, descuento:0,costosIniciales:0.00, costosFinales:0, valorNeto:0, valorRecibido:0, Flujo:0, tcea:0 },
+      {id: 0, moneda:0,ndias:0, tep:0, d:0, descuento:0,costosIniciales:0.00, costosFinales:0, valorNeto:0, valorRecibido:0, Flujo:0, tcea:0 },
 
     ],
 
@@ -195,7 +267,7 @@ name: "descuento",
   calcularTodo(){
 
     this.soluciones =[
-      {id: 0, ndias:0, tep:0, d:0, descuento:0,costosIniciales:0.00, costosFinales:0, valorNeto:0, valorRecibido:0, Flujo:0, tcea:0 },
+      {id: 0, moneda:0, ndias:0, tep:0, d:0, descuento:0,costosIniciales:0.00, costosFinales:0, valorNeto:0, valorRecibido:0, Flujo:0, tcea:0},
     ]
 
     let n =1
@@ -205,11 +277,11 @@ name: "descuento",
         .then(response => {
           this.deudasAPI = response.data
           this.deudasAPI.forEach(
-
               e =>{
                 console.log(e)
                 let solucion={ }
                 solucion.id=n,
+                    solucion.moneda = this.monedaTipo(e.TipoMonedaId)
                     solucion.ndias = this.calcularDiferenciaFechas(this.fecha, e.fechaVencimiento),
                     solucion.tep = this.calcularTEP(solucion.ndias, this.dias, this.tea)*100,
                     solucion.d= this.calculard(solucion.tep)*100,
@@ -241,13 +313,23 @@ name: "descuento",
 
         })
         .catch((e) => {
-          console.log(e);
+          e
+          // console.log(e);
         });
 
 
 
   },
 
+    monedaTipo(tipoMoneda){
+
+      if(tipoMoneda == 1){
+        return "Soles";
+      }else if(tipoMoneda == 2){
+        return "Dolares";
+      }
+
+    },
     calcularDiferenciaFechas( dia1 , dia2){
 
       let fechainicial= new Date(dia1)
@@ -292,7 +374,8 @@ name: "descuento",
 
           })
           .catch((e) => {
-            console.log(e);
+            e
+            // console.log(e);
           });
 
 
