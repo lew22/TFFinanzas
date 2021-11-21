@@ -145,12 +145,11 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn text @click="submit(); dialog.value = false " class="success mx-0 mt-3">Agregar tabla</v-btn>
+            <v-btn text @click="submit(); dialog.value = false " outlined rounded color="green" class="mx-0 mt-3">Crear</v-btn>
             <v-spacer></v-spacer>
-            <v-btn  @click="dialog.value=false" class="error mx-0 mt-3"> Cancelar</v-btn>
+            <v-btn  @click="dialog.value=false" outlined rounded color="red" class="mx-0 mt-3"> Cancelar</v-btn>
           </v-form>
         </v-card-text>
-
 
       </v-card>
 

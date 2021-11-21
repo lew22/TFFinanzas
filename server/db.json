@@ -11,6 +11,18 @@
       "nombre": "mauricio",
       "mail": "mauricio@gmail.com",
       "password": "cuenta123"
+    },
+    {
+      "nombre": "test",
+      "email": "testing@gmail.com",
+      "password": "richarddd",
+      "id": 3
+    },
+    {
+      "nombre": "test",
+      "email": "testing@gmail.com",
+      "password": "richarddd",
+      "id": 4
     }
   ],
   "clientes": [
@@ -19,7 +31,7 @@
       "dni": 43243244,
       "direccion": "Jr Principal",
       "ndeudas": 0,
-      "id":1
+      "id": 1
     },
     {
       "nombre": "Pedro",

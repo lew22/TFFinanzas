@@ -1,34 +1,7 @@
 <template>
   <v-layout row wrap justify-space-around>
     <v-flex  md4>
-<!--      <v-card-->
-<!--          flat-->
-<!--          height="360"-->
-<!--          class="indigo lighten-3">-->
 
-<!--        <v-card-title class="text-h5">-->
-<!--          Deudas pendientes-->
-<!--        </v-card-title>-->
-<!--        <v-card-subtitle class="text-h6">-->
-
-<!--          Calcula las ganancias de tus deudas-->
-
-<!--        </v-card-subtitle>-->
-<!--        <v-card-text>-->
-<!--          <v-avatar size="120">-->
-<!--            <v-icon size="100"> mdi-wallet-travel</v-icon>-->
-<!--          </v-avatar>-->
-<!--          <p class="text-h4 text&#45;&#45;primary">-->
-<!--            {{ numdeudas }}-->
-
-<!--          </p>-->
-
-<!--        </v-card-text>-->
-
-<!--        <v-card-actions>-->
-<!--          <v-btn depressed color="green" @click="navigateToCartera"> Ir a descuentos</v-btn>-->
-<!--        </v-card-actions>-->
-<!--      </v-card>-->
       <v-card
           class="mx-auto"
           max-width="344"
@@ -70,34 +43,6 @@
 
 
     <v-flex  md4>
-<!--      <v-card-->
-<!--          flat-->
-<!--          height="360"-->
-<!--          class="indigo lighten-3">-->
-
-<!--        <v-card-title class="text-h5">-->
-<!--          Clientes-->
-<!--        </v-card-title>-->
-<!--        <v-card-subtitle class="text-h6">-->
-
-<!--          Agrega nuevos clientes o actualiza informacion.-->
-
-<!--        </v-card-subtitle>-->
-<!--        <v-card-text>-->
-<!--          <v-avatar size="120">-->
-<!--            <v-icon size="100"> mdi-account-supervisor</v-icon>-->
-<!--          </v-avatar>-->
-<!--          <p class="text-h4 text&#45;&#45;primary">-->
-<!--            {{ numclientes}}-->
-
-<!--          </p>-->
-
-<!--        </v-card-text>-->
-
-<!--        <v-card-actions>-->
-<!--          <v-btn depressed color="green" @click="navigateToClientes" > Ir a clientes</v-btn>-->
-<!--        </v-card-actions>-->
-<!--      </v-card>-->
 
       <v-card
           class="mx-auto"

@@ -23,9 +23,9 @@
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions>
-        <v-btn color="success">Register</v-btn>
+        <v-btn rounded outlined class ="mx-0 mt-3">Register</v-btn>
         <v-spacer></v-spacer>
-        <v-btn color="info" @click="validate">Login</v-btn>
+        <v-btn rounded outlined class ="mx-0 mt-3" @click="validate">Login</v-btn>
       </v-card-actions>
     </v-card>
 </template>

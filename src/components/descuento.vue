@@ -1,117 +1,5 @@
-<!--<template>-->
-
-<!--  <v-card height="120">-->
-
-<!--    <crear-descuento @addDiscount="agregarDescuento" />-->
-
-<!--    <v-card>-->
-<!--      <v-card-title>Datos iniciales</v-card-title>-->
-<!--      <v-card-text>-->
-<!--        <li>-->
-<!--          Fecha de descuento {{fecha}}-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          Dias x año {{dias}}-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          Gastos iniciales  {{gastoi}}-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          Gastos finales {{gastof}}-->
-<!--        </li>-->
-<!--        <li>-->
-<!--          TEA compensatoria {{tea}} %-->
-<!--        </li>-->
-<!--      </v-card-text>-->
-
-<!--    </v-card>-->
-
-
-<!--    <v-card>-->
-<!--    <v-simple-table dense>-->
-<!--      <template v-slot:default>-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--          <th class="text-right">-->
-<!--            Id-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            NDias-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            TEP (i')-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            d-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            Descuento-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            Costos iniciales-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            Costos finales-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            Valor neto-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            Valor a recibir-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            Flujo-->
-<!--          </th>-->
-<!--          <th class="text-right">-->
-<!--            TCEA-->
-<!--          </th>-->
-<!--        </tr>-->
-
-
-<!--        </thead>-->
-
-<!--        <tbody>-->
-
-<!--        <tr-->
-<!--            v-for="item in soluciones"-->
-<!--            :key="item.id"-->
-<!--        >-->
-<!--          <td class="text-right"> {{item.id}}</td>-->
-<!--          <td class="text-right"> {{item.ndias}} </td>-->
-<!--          <td class="text-right"> {{ item.tep.toFixed(3)}} %</td>-->
-<!--          <td class="text-right"> {{item.d.toFixed(3)}} %</td>-->
-<!--          <td class="text-right red&#45;&#45;text" > {{ item.descuento.toFixed(2) }} </td>-->
-<!--          <td class="text-right red&#45;&#45;text"> {{ item.costosIniciales.toFixed(2) }} </td>-->
-<!--          <td class="text-right red&#45;&#45;text"> {{ item.costosFinales.toFixed(2) }} </td>-->
-<!--          <td class="text-right"> {{ item.valorNeto.toFixed(2) }}</td>-->
-<!--          <td class="text-right blue&#45;&#45;text"> {{ item.valorRecibido.toFixed(2) }} </td>-->
-<!--          <td class="text-right red&#45;&#45;text"> {{ item.Flujo.toFixed(2) }} </td>-->
-<!--          <td class="text-right"> {{ item.tcea.toFixed(4) }}  %</td>-->
-
-<!--        </tr>-->
-
-<!--        </tbody>-->
-
-<!--      </template>-->
-
-<!--    </v-simple-table>-->
-
-<!--  </v-card>-->
-<!--    <v-card-actions>-->
-<!--      <v-card-text align="right" style="list-style-type:none;">-->
-<!--        <li >NDias: diferencia de dias entre la fecha de vencimiento de la deuda y el descuento</li>-->
-<!--        <li>TEP: Tasa Efectiva del Periodo</li>-->
-<!--        <li>d: Porcentaje de descuento</li>-->
-<!--        <li>Valor neto: Valor a presente al momento del descuento</li>-->
-<!--        <li>Descuento: Monto descontado de la deuda</li>-->
-<!--        <li>TCEA: Tasa de Costo Efectivo Anual</li>-->
-<!--      </v-card-text>-->
-<!--    </v-card-actions>-->
-<!--  </v-card>-->
-<!--</template>-->
 
 <template>
-
 
   <div class="pa-md-4 mx-lg-auto">
 
@@ -168,11 +56,6 @@
           More info about {{ item.ndias}}
         </td>
       </template>
-<!--      <template v-slot:expanded-item="{ headers, item}">-->
-<!--        <td :colspan="headers.length">-->
-<!--          More info about {{ item.ndias}}-->
-<!--        </td>-->
-<!--      </template>-->
 
 
     </v-data-table>
