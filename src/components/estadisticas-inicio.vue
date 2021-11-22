@@ -13,9 +13,9 @@
 
             </div>
             <v-list-item-title class="text-h5 mb-1">
-              Deudas pendientes
+              Letras pendientes
             </v-list-item-title>
-            <v-list-item-subtitle>Calcula las ganancias de tus deudas</v-list-item-subtitle>
+            <v-list-item-subtitle>Calcula las ganancias de tus letras</v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-avatar

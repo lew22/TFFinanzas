@@ -42,8 +42,8 @@
         </v-sheet>
         <estadisticas-inicio></estadisticas-inicio>
 
-        <v-spacer> <h1>Deudas actuales </h1></v-spacer>
-        <agregar-deuda ></agregar-deuda>
+        <v-spacer> <h1>Letras actuales </h1></v-spacer>
+        <agregar-deuda></agregar-deuda>
         <v-card height="30" flat color="white"></v-card>
         <pendientes-inicio></pendientes-inicio>
 
@@ -59,6 +59,7 @@
 </template>
 
 <script>
+
 import PendientesInicio from "@/components/pendientes-inicio";
 import EstadisticasInicio from "@/components/estadisticas-inicio";
 import AgregarDeuda from "@/components/agregar-deuda";

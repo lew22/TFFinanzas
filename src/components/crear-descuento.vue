@@ -67,7 +67,6 @@
                 prepend-icon="mdi-calendar-search"
             ></v-select>
 
-
             <v-text-field
                 v-model.number="gastoi"
                 label="Gastos iniciales"
@@ -83,7 +82,7 @@
                 :rules="inputRulesNumero"
             ></v-text-field>
             <v-text-field
-                v-model.number="tea"
+                v-model.number="tep"
                 label="TEA" type="number"
                 prepend-icon="mdi-sack-percent "
                 append-icon="mdi-percent"
@@ -113,10 +112,13 @@
 
 
 
+import InicialesApiService from "@/services/iniciales-api.service";
+// import DeudasApiService from "@/services/deudas-api-service";
+
+
 export default {
 name: "crear-descuento",
-
-
+  props: ['username'],
   data(){
   return{
 
@@ -140,14 +142,23 @@ name: "crear-descuento",
 
     ],
 
+    iteminiciales:[
+      {
+        id:1,
+        fecha: new Date().toISOString().substr(0, 10),
+        dias:360 ,
+        gastoi: 10.70,
+        gastof:17.00,
+        tep:14.100,
+      }
+    ],
 
     fecha:new Date().toISOString().substr(0, 10),
     dias:360,
-    gastoi:0,
-    gastof:0,
-    tea:1.4,
+    gastoi: 10.70,
+    gastof:17.00,
+    tep:1.4,
     dialog:false
-
 
 
   }
@@ -155,22 +166,57 @@ name: "crear-descuento",
   methods:{
   submit(){
     if( this.$refs.form.validate() ){
-      console.log(this.dias + this.gastoi+ this.gastof + this.tea)
 
-      this.$emit("addDiscount", {id:1, fecha:this.fecha, dias:this.dias, gastoi: this.gastoi, gastof:this.gastof, tea:this.tea} )
+      console.log(this.iteminiciales.dias + this.iteminiciales.gastoi+ this.iteminiciales.gastof + this.iteminiciales.tep)
+      // InicialesApiService.update(this.iteminiciales.id,this.iteminiciales)
+      this.$emit("addDiscount", {id:this.iteminiciales.id, fecha:this.iteminiciales.fecha, dias:this.iteminiciales.dias, gastoi: this.iteminiciales.gastoi, gastof:this.iteminiciales.gastof, tep:this.iteminiciales.tep} )
       this.fecha=''
       this.dias=''
       this.gastoi=''
       this.gastof=''
-      this.tea=''
-
+      this.tep=''
     }
 
   },
+    recibirDatosIniciales(){
+      InicialesApiService.getAll()
+          .then(response => {
+            this.datosinicialesAPI = response.data;
+            this.itemsdatosinicialesAPI = response.data.map(this.mapearI)
+            this.itemsdatosinicialesAPI.forEach(
+                e =>{
+                  this.iteminiciales.id= e.id,
+                      this.iteminiciales.fecha= e.fecha,
+                      this.iteminiciales.dias= e.dias,
+                      this.iteminiciales.gastoi= e.gastoi,
+                      this.iteminiciales.gastof= e.gastof,
+                      this.iteminiciales.tep= e.tep
+                  console.log(e)
+                })
+          })
+          .catch((e) => {
+            e
+            // console.log(e);
+          });
+      console.log(this.itemsdatosinicialesAPI, "este es....")
+    },
+    mapearI(info){
+      return{
+        id: info.id,
+        fecha:info.fecha,
+        dias:info.dias,
+        gastoi:info.gastoi,
+        gastof:info.gastof,
+        tep:info.tep
+      }
+    }
 
 
-
-  }
+   }
+//   ,
+//   mounted() {
+//   this.recibirDatosIniciales()
+// }
 }
 </script>
 

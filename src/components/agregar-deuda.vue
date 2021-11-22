@@ -1,13 +1,13 @@
 <template>
   <v-dialog transition="dialog-bottom-transition" max-width="600" v-model="dialog">
     <template v-slot:activator="{on, attrs}">
-      <v-btn rounded outlined color="green" v-bind="attrs" v-on="on" width="300">Agregar deuda</v-btn>
+      <v-btn rounded outlined color="green" v-bind="attrs" v-on="on" width="300">Agregar letra</v-btn>
 
     </template>
     <template v-slot:default="dialog">
       <v-card>
         <v-card-title>
-          <h2>Agregar deuda</h2>
+          <h2>Agregar Letra</h2>
         </v-card-title>
 
         <v-card-text>
@@ -19,6 +19,7 @@
                 :rules="inputRulesTexto"
                 prepend-icon="mdi-format-title"
             ></v-text-field>
+
             <v-text-field
                 v-model="item.descripcion"
                 label="Descripcion"
@@ -26,6 +27,15 @@
                 :rules="inputRulesTexto"
                 prepend-icon="mdi-pencil"
             > </v-text-field>
+
+            <v-text-field
+                v-model="item.valorTasa"
+                label="Valor Tasa"
+                type="text"
+                :rules="inputRulesDinero"
+                prepend-icon="mdi-cash"
+            > </v-text-field>
+
             <v-text-field
                 v-model.number="item.valorNominal"
                 label="Valor nominal"
@@ -41,6 +51,15 @@
                 label="Moneda"
                 v-model="item.TipoMonedaId"
                 prepend-icon="mdi-cash-marker"
+            ></v-select>
+
+            <v-select
+                :items=" itemsTasa "
+                item-text="nombre"
+                item-value="id"
+                label="Tasa"
+                v-model="item.tasaId"
+                prepend-icon="mdi-cash"
             ></v-select>
 
             <v-container>
@@ -194,6 +213,10 @@ export default {
         {nombre:'Pedro', id: 2},
         {nombre:'Luis', id: 3},
       ],
+      itemsTasa:[
+        {nombre:'Tasa efectiva', id: 1},
+        {nombre:'Tasa nominal', id: 2},
+      ],
       itemsAPI:[],
       itemsAPIM:[],
 
@@ -207,11 +230,14 @@ export default {
       item:{
       titulo:'',
       descripcion:'',
+        valorTasa:'',
        valorNominal:'',
       fechaGiro:'',
       fechaVencimiento: '',
+        TipoTasaId:1,
         TipoMonedaId:'',
-      clienteId:1
+      clienteId:1,
+
     },
 
     dialog:false,

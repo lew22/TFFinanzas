@@ -4,25 +4,25 @@
   <div class="pa-md-4 mx-lg-auto">
 
     <v-card >
-    <crear-descuento  @addDiscount="agregarDescuento" />
+    <crear-descuento @addDiscount="agregarDescuento" />
 
     <v-card>
       <v-card-title>Datos iniciales</v-card-title>
       <v-card-text>
         <li>
-          Fecha de descuento {{fecha}}
+          Fecha de descuento {{iteminiciales.fecha}}
         </li>
         <li>
-          Dias x año {{dias}}
+          Dias x año {{iteminiciales.dias}}
         </li>
         <li>
-          Gastos iniciales  {{gastoi}}
+          Gastos iniciales  {{iteminiciales.gastoi}}
         </li>
         <li>
-          Gastos finales {{gastof}}
+          Gastos finales {{iteminiciales.gastof}}
         </li>
         <li>
-          TEA compensatoria {{tea}} %
+          TEA compensatoria {{iteminiciales.tep}} %
         </li>
       </v-card-text>
 
@@ -69,6 +69,7 @@
               <li>TCEA: Tasa de Costo Efectivo Anual</li>
     </v-card-text>
 
+
   </div>
 
 
@@ -78,15 +79,15 @@
 <script>
 import DeudasApiService from "@/services/deudas-api-service";
 import CrearDescuento from "@/components/crear-descuento";
-
-
+// import MonedaApiService from "@/services/moneda-api.service";
+import InicialesApiService from "@/services/iniciales-api.service"
 
 export default {
 name: "descuento",
   components: {CrearDescuento},
 
   data(){
-  return{
+  return {
     expanded: [],
     singleExpand: false,
     solucionHeaders: [
@@ -96,30 +97,48 @@ name: "descuento",
         sortable: false,
         value: 'id',
       },
-      { text: 'Moneda', value: 'moneda' },
-      { text: 'Ndias', value: 'ndias' },
-      { text: 'TEP', value: 'tep' },
-      { text: 'D', value: 'd' },
-      { text: 'Descuento', value: 'descuento' },
-      { text: 'Costos iniciales', value: 'costosIniciales' },
-      { text: 'Costos finales', value: 'costosFinales' },
-      { text: 'Valor neto', value: 'valorNeto' },
-      { text: 'Valor a recibir', value: 'valorRecibido' },
-      { text: 'Flujo', value: 'Flujo' },
-      { text: 'TCEA', value: 'tcea' },
-      { text: '', value: 'data-table-expand' },
+      {text: 'Moneda', value: 'moneda'},
+      {text: 'Ndias', value: 'ndias'},
+      {text: 'TEP', value: 'tep'},
+      {text: 'D', value: 'd'},
+      {text: 'Descuento', value: 'descuento'},
+      {text: 'Costos iniciales', value: 'costosIniciales'},
+      {text: 'Costos finales', value: 'costosFinales'},
+      {text: 'Valor neto', value: 'valorNeto'},
+      {text: 'Valor a recibir', value: 'valorRecibido'},
+      {text: 'Flujo', value: 'Flujo'},
+      {text: 'TCEA', value: 'tcea'},
+      {text: '', value: 'data-table-expand'},
+    ],
+
+    user:[
+      {
+        username:'richard',
+      }
+    ],
+    iteminiciales:[
+      {
+        id:0,
+        fecha:'2021-11-16',
+        dias:360 ,
+        gastoi: 10.70,
+        gastof:17.00,
+        tea:14.100,
+      }
     ],
 
     deudasAPI:[],
     displayDeudasAPI:[],
+    datosinicialesAPI:[],
 
-    id:1,
-    fecha:'2021-11-16',
+    // id:1,
+    // fecha:'2021-11-16',
+    // dias:360 ,
+    // gastoi: 10.70,
+    // gastof:17.00,
+    // tea:14.100,
 
-    dias:360 ,
-    gastoi: 11.70,
-    gastof:17.00,
-    tea:14.800,
+    itemsdatosinicialesAPI:[],
 
     soluciones:[
       {id: 0, moneda:0,ndias:0, tep:0, d:0, descuento:0,costosIniciales:0.00, costosFinales:0, valorNeto:0, valorRecibido:0, Flujo:0, tcea:0 },
@@ -138,6 +157,7 @@ name: "descuento",
   }
   },
   methods:{
+
     onResize(){
       if(window.innerWidth < 769)
         this.isMobile = true;
@@ -151,11 +171,42 @@ name: "descuento",
     this.dias= obj.dias
     this.gastoi=obj.gastoi
     this.gastof=obj.gastof
-    this.tea=obj.tea
+    this.tep=obj.tep
 
   },
-
-
+  recibirDatosIniciales(){
+    InicialesApiService.getAll()
+        .then(response => {
+          this.datosinicialesAPI = response.data;
+          this.itemsdatosinicialesAPI = response.data.map(this.mapearI)
+          this.itemsdatosinicialesAPI.forEach(
+              e =>{
+                   this.iteminiciales.id= e.id,
+                       this.iteminiciales.fecha= e.fecha,
+                       this.iteminiciales.dias= e.dias,
+                       this.iteminiciales.gastoi= e.gastoi,
+                       this.iteminiciales.gastof= e.gastof,
+                       this.iteminiciales.tep= e.tep
+                   console.log(e)
+              })
+        })
+        .catch((e) => {
+          e
+          // console.log(e);
+        });
+    console.log(this.itemsdatosinicialesAPI, "este es....")
+  },
+    mapearI(info){
+      return{
+        id: info.id,
+        fecha:info.fecha,
+        dias:info.dias,
+        gastoi:info.gastoi,
+        gastof:info.gastof,
+        tep:info.tep
+      }
+    }
+  ,
   calcularTodo(){
 
     this.soluciones =[
@@ -174,16 +225,16 @@ name: "descuento",
                 let solucion={ }
                 solucion.id=n,
                     solucion.moneda = this.monedaTipo(e.TipoMonedaId)
-                    solucion.ndias = this.calcularDiferenciaFechas(this.fecha, e.fechaVencimiento),
-                    solucion.tep = this.calcularTEP(solucion.ndias, this.dias, this.tea)*100,
+                    solucion.ndias = this.calcularDiferenciaFechas(this.iteminiciales.fecha, e.fechaVencimiento),
+                    solucion.tep = this.calcularTEP(solucion.ndias, this.iteminiciales.dias, e.valorTasa)*100,
                     solucion.d= this.calculard(solucion.tep)*100,
                     solucion.descuento = this.calcularDescuento(e.valorNominal, solucion.d),
-                    solucion.costosIniciales = -1*this.gastoi,
-                    solucion.costosFinales = -1*this.gastof,
+                    solucion.costosIniciales = -1*this.iteminiciales.gastoi,
+                    solucion.costosFinales = -1*this.iteminiciales.gastof,
                     solucion.valorNeto = this.calcularValorNeto(e.valorNominal, solucion.descuento),
                     solucion.valorRecibido = this.calcularValorRecibido(solucion.valorNeto, solucion.costosIniciales),
                     solucion.Flujo = this.calcularFlujo(e.valorNominal, solucion.costosFinales),
-                    solucion.tcea = this.calcularTCEA(solucion.Flujo, solucion.valorRecibido, this.dias, solucion.ndias)*100
+                    solucion.tcea = this.calcularTCEA(solucion.Flujo, solucion.valorRecibido, this.iteminiciales.dias, solucion.ndias)*100
 
 
                 if(solucion.ndias == 0){
@@ -231,10 +282,16 @@ name: "descuento",
         return (fechafinal-fechainicial)/(1000 *3600*24)
       else return 0
     },
-    calcularTEP(dias, dxa, tea){
-
-    return (1+ tea/100)**(dias/dxa) -1
-
+    calcularTEP(dias, dxa, tep){
+      //1 tasa efectiva
+      // 2 tasa nominal
+      // if(TipoTasaId== 1){
+      //   return (1+ tep/100)**(dias/dxa) -1
+      // }else if(TipoTasaId == 2){
+      //   // return (1+ tep/100)**(dias/dxa) -1
+      //   return (1+ tep/100)**(dias/dxa) -1
+      // }
+      return (1+ tep/100)**(dias/dxa) -1
     },
     calculard(tep){
     return (tep/100)/(1+tep/100)
@@ -286,7 +343,8 @@ name: "descuento",
 
   },
   mounted() {
-  this.calcularTodo()
+    this.recibirDatosIniciales()
+    this.calcularTodo()
   }
 }
 </script>

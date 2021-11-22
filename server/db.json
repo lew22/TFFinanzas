@@ -27,25 +27,11 @@
   ],
   "clientes": [
     {
-      "nombre": "Juan",
-      "dni": 43243244,
-      "direccion": "Jr Principal",
+      "nombre": "richard",
+      "dni": 75104907,
+      "direccion": "av-sanmicky",
       "ndeudas": 0,
       "id": 1
-    },
-    {
-      "nombre": "Pedro",
-      "dni": 43243244,
-      "direccion": "Jr Principal",
-      "ndeudas": 0,
-      "id": 2
-    },
-    {
-      "nombre": "Luis",
-      "dni": 54354443,
-      "direccion": "Av Secundaria",
-      "ndeudas": 0,
-      "id": 3
     }
   ],
   "moneda": [
@@ -60,44 +46,27 @@
   ],
   "deudas": [
     {
-      "titulo": "Servicios prestados",
-      "descripcion": "Por venta de madera",
-      "valorNominal": 8538,
-      "fechaGiro": "2021-11-16",
-      "fechaVencimiento": "2022-11-16",
-      "clienteId": 3,
-      "TipoMonedaId": 1,
-      "id": 1
-    },
-    {
-      "titulo": "Servicios prestados",
-      "descripcion": "Por venta de madera",
-      "valorNominal": 8538,
-      "fechaGiro": "2021-11-16",
-      "fechaVencimiento": "2022-11-16",
-      "clienteId": 3,
-      "TipoMonedaId": 1,
-      "id": 1
-    },
-    {
-      "titulo": "Servicios prestados",
-      "descripcion": "Por venta de madera",
-      "valorNominal": 8538,
-      "fechaGiro": "2021-11-16",
-      "fechaVencimiento": "2022-11-16",
-      "clienteId": 3,
-      "TipoMonedaId": 1,
-      "id": 1
-    },
-    {
-      "titulo": "Servicios prestados",
-      "descripcion": "Por venta de materiales",
-      "valorNominal": 9865,
-      "fechaGiro": "2021-11-16",
-      "fechaVencimiento": "2022-11-16",
-      "clienteId": 2,
+      "titulo": "testt",
+      "descripcion": "fdsfdsafsd",
+      "valorTasa": "24",
+      "valorNominal": 600000,
+      "fechaGiro": "2021-11-22",
+      "fechaVencimiento": "2022-11-22",
+      "TipoTasaId": 1,
       "TipoMonedaId": 2,
-      "id": 2
+      "clienteId": 1,
+      "tasaId": 1,
+      "id": 1
+    }
+  ],
+  "datosiniciales": [
+    {
+      "id": 1,
+      "fecha": "2021-11-16",
+      "dias": 360,
+      "gastoi": 10.7,
+      "gastof": 17,
+      "tep": 14.1
     }
   ]
 }
